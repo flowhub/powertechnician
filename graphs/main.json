@@ -4,11 +4,98 @@
         "name": "main",
         "environment": {
             "type": "noflo-nodejs"
-        }
+        },
+        "description": "Web server for the power technician",
+        "icon": "globe"
     },
     "inports": {},
     "outports": {},
     "groups": [],
-    "processes": {},
-    "connections": []
+    "processes": {
+        "xpress/Server_vp14o": {
+            "component": "xpress/Server",
+            "metadata": {
+                "label": "Server",
+                "x": 334,
+                "y": 100,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "PortFromEnv": {
+            "component": "core/ReadEnv",
+            "metadata": {
+                "label": "PortFromEnv",
+                "x": 108,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "DefaultPort": {
+            "component": "core/Kick",
+            "metadata": {
+                "label": "DefaultPort",
+                "x": 216,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "PortFromEnv",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "xpress/Server_vp14o",
+                "port": "port"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "PortFromEnv",
+                "port": "error"
+            },
+            "tgt": {
+                "process": "DefaultPort",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "DefaultPort",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "xpress/Server_vp14o",
+                "port": "port"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "data": "VCAP_APP_PORT",
+            "tgt": {
+                "process": "PortFromEnv",
+                "port": "key"
+            }
+        },
+        {
+            "data": "5000",
+            "tgt": {
+                "process": "DefaultPort",
+                "port": "data"
+            }
+        }
+    ]
 }
