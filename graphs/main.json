@@ -12,7 +12,7 @@
     "outports": {},
     "groups": [],
     "processes": {
-        "powertechnician/Server_6dtv4": {
+        "Server": {
             "component": "powertechnician/Server",
             "metadata": {
                 "label": "Server",
@@ -22,7 +22,7 @@
                 "height": 72
             }
         },
-        "powertechnician/Forecast_uooet": {
+        "Forecast": {
             "component": "powertechnician/Forecast",
             "metadata": {
                 "label": "Forecast",
@@ -36,22 +36,22 @@
     "connections": [
         {
             "src": {
-                "process": "powertechnician/Forecast_uooet",
+                "process": "Forecast",
                 "port": "out"
             },
             "tgt": {
-                "process": "powertechnician/Server_6dtv4",
+                "process": "Server",
                 "port": "forecast"
             },
             "metadata": {}
         },
         {
             "src": {
-                "process": "powertechnician/Server_6dtv4",
-                "port": "station"
+                "process": "Server",
+                "port": "stations"
             },
             "tgt": {
-                "process": "powertechnician/Forecast_uooet",
+                "process": "Forecast",
                 "port": "in"
             },
             "metadata": {}
