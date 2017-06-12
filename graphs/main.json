@@ -119,7 +119,7 @@
             "component": "powertechnician/SendStationResults",
             "metadata": {
                 "label": "SendResults",
-                "x": 1404,
+                "x": 972,
                 "y": -36,
                 "width": 72,
                 "height": 72
@@ -129,8 +129,8 @@
             "component": "powertechnician/GetStationForecast",
             "metadata": {
                 "label": "GetStationForecast",
-                "x": 1080,
-                "y": 72,
+                "x": 864,
+                "y": 36,
                 "width": 72,
                 "height": 72
             }
