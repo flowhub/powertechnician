@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+var stations = require('../stations.json');
+var Promise = require('bluebird');
+var MetarFetcher = require('metar-taf').MetarFetcher;
+var metar = new MetarFetcher();
+
+Promise.map(stations, function (station) {
+  metar.getDecodedData(station.icao)
+  .then(function (data) {
+    console.log(station.name, data);
+  });
+});
