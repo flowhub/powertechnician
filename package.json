@@ -6,7 +6,7 @@
   "scripts": {
     "test": "grunt test",
     "postinstall": "./node_modules/.bin/noflo-cache-preheat",
-    "start": "./node_modules/.bin/msgflo --broker=mqtt://localhost --auto-save=true --runtime-id=fa74a16a-35b0-4a54-b587-97e906471f8c --graph=graphs/main.json",
+    "start": "./node_modules/.bin/msgflo --broker=mqtt://localhost --runtime-id=fa74a16a-35b0-4a54-b587-97e906471f8c --graph=graphs/main.json",
     "dev": "./node_modules/.bin/noflo-nodejs"
   },
   "repository": {
