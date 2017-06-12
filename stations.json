@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Cork Airport",
+    "icao": "EICK",
+    "lat": 51.841389,
+    "lon": -8.491111
+  },
+  {
+    "name": "Galway Airport",
+    "icao": "EICM",
+    "lat": 53.300278,
+    "lon": -8.941111
+  },
+  {
+    "name": "Donegal Airport",
+    "icao": "EIDL",
+    "lat": 55.044167,
+    "lon": -8.341111
+  },
+  {
+    "name": "Dublin Airport",
+    "icao": "EIDW",
+    "lat": 53.421389,
+    "lon": -6.27
+  },
+  {
+    "name": "Ireland West Airport Knock",
+    "icao": "EIKN",
+    "lat": 53.910278,
+    "lon": -8.818611
+  },
+  {
+    "name": "Kerry Airport",
+    "icao": "EIKN",
+    "lat": 52.180833,
+    "lon": -9.523889
+  },
+  {
+    "name": "Casement Aerodrome",
+    "icao": "EIME",
+    "lat": 53.301667,
+    "lon": -6.451111
+  },
+  {
+    "name": "Shannon Airport",
+    "icao": "EINN",
+    "lat": 52.701944,
+    "lon": -8.924722
+  },
+  {
+    "name": "Sligo Airport",
+    "icao": "EISG",
+    "lat": 54.280278,
+    "lon": -8.599167
+  },
+  {
+    "name": "Waterford Airport",
+    "icao": "EIWF",
+    "lat": 52.187222,
+    "lon": -7.086944
+  }
+]
