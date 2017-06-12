@@ -1,6 +1,6 @@
 ---
 applications:
 - name: powertechnician
-  memory: 128M
+  memory: 256M
   buildpack: nodejs_buildpack
   command: node ./node_modules/.bin/noflo-nodejs --graph graphs/main.json
