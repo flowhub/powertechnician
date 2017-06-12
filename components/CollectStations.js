@@ -2,29 +2,47 @@ var noflo = require('noflo');
 
 exports.getComponent = function() {
   var c = new noflo.Component();
-  c.description = 'Collect packets into an array';
+  c.description = 'Collect station information';
   c.icon = 'forward';
-  c.inPorts.add('in', {
+  c.inPorts.add('stations', {
     datatype: 'all',
   });
-  c.outPorts.add('out', {
+  c.inPorts.add('forecast', {
+    datatype: 'all',
+  });
+  c.outPorts.add('ready', {
+    datatype: 'array'
+  });
+  c.outPorts.add('stations', {
     datatype: 'array'
   });
   c.forwardBrackets = {};
   c.process(function (input, output) {
-    if (!input.hasStream('in')) {
-      return;
+    if (!input.hasData('stations', 'forecast')) {
+      return false;
     }
-    var data = input.getStream('in').filter(function (ip) {
-      if (ip.type != 'data') {
+    var forecast = input.getData('forecast');
+    var stations = input.getData('stations');
+    stations = stations.map(function (station) {
+      if (station.icao !== forecast.icao) {
+        return;
+      }
+      station.forecast = forecast.data;
+    });
+    var missing = stations.filter(function (station) {
+      if (station.forecast) {
         return false;
       }
       return true;
-    }).map(function (ip) {
-      return ip.data;
     });
+    if (missing.length) {
+      output.sendDone({
+        stations: stations
+      });
+      return;
+    }
     output.sendDone({
-      out: data
+      ready: stations
     });
   });
   return c;
