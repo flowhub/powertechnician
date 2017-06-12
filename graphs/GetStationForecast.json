@@ -10,10 +10,20 @@
     },
     "inports": {
         "in": {
-            "process": "objects/SplitArray_fm8kl",
+            "process": "core/Split_ao8wx",
             "port": "in",
             "metadata": {
-                "x": 684,
+                "x": 576,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "forecast": {
+            "process": "powertechnician/CollectStations_h0h8t",
+            "port": "forecast",
+            "metadata": {
+                "x": 1152,
                 "y": 36,
                 "width": 72,
                 "height": 72
@@ -21,22 +31,32 @@
         }
     },
     "outports": {
-        "weather": {
-            "process": "powertechnician/CollectStations_3bf58",
+        "station": {
+            "process": "powertechnician/GetWeather_a6tx1",
             "port": "out",
             "metadata": {
-                "x": 1404,
-                "y": -108,
+                "x": 1080,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "weather": {
+            "process": "powertechnician/CollectStream_tcixc",
+            "port": "out",
+            "metadata": {
+                "x": 1440,
+                "y": -72,
                 "width": 72,
                 "height": 72
             }
         },
         "power": {
-            "process": "powertechnician/CollectStations_lxsj2",
-            "port": "out",
+            "process": "powertechnician/CollectStations_h0h8t",
+            "port": "ready",
             "metadata": {
-                "x": 1404,
-                "y": 36,
+                "x": 1440,
+                "y": 144,
                 "width": 72,
                 "height": 72
             }
@@ -49,7 +69,7 @@
             "metadata": {
                 "label": "SplitArray",
                 "x": 828,
-                "y": 36,
+                "y": -72,
                 "width": 72,
                 "height": 72
             }
@@ -58,48 +78,38 @@
             "component": "powertechnician/GetWeather",
             "metadata": {
                 "label": "GetWeather",
-                "x": 936,
-                "y": 36,
+                "x": 972,
+                "y": -72,
                 "width": 72,
                 "height": 72
             }
         },
-        "Convert": {
-            "component": "powertechnician/WeatherToForecast",
+        "core/Split_ao8wx": {
+            "component": "core/Split",
             "metadata": {
-                "label": "Convert",
-                "x": 1044,
+                "label": "Split",
+                "x": 684,
                 "y": 36,
                 "width": 72,
                 "height": 72
             }
         },
-        "subprocess/Execute_xuzrd": {
-            "component": "subprocess/Execute",
+        "powertechnician/CollectStream_tcixc": {
+            "component": "powertechnician/CollectStream",
             "metadata": {
-                "label": "Execute",
-                "x": 1152,
-                "y": 36,
+                "label": "CollectStream",
+                "x": 1296,
+                "y": -72,
                 "width": 72,
                 "height": 72
             }
         },
-        "powertechnician/CollectStations_lxsj2": {
+        "powertechnician/CollectStations_h0h8t": {
             "component": "powertechnician/CollectStations",
             "metadata": {
                 "label": "CollectStations",
-                "x": 1260,
-                "y": 36,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "powertechnician/CollectStations_3bf58": {
-            "component": "powertechnician/CollectStations",
-            "metadata": {
-                "label": "CollectStations",
-                "x": 1260,
-                "y": -108,
+                "x": 1296,
+                "y": 144,
                 "width": 72,
                 "height": 72
             }
@@ -121,12 +131,12 @@
         },
         {
             "src": {
-                "process": "Convert",
+                "process": "core/Split_ao8wx",
                 "port": "out"
             },
             "tgt": {
-                "process": "subprocess/Execute_xuzrd",
-                "port": "command"
+                "process": "objects/SplitArray_fm8kl",
+                "port": "in"
             },
             "metadata": {}
         },
@@ -136,19 +146,19 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "Convert",
+                "process": "powertechnician/CollectStream_tcixc",
                 "port": "in"
             },
             "metadata": {}
         },
         {
             "src": {
-                "process": "subprocess/Execute_xuzrd",
+                "process": "core/Split_ao8wx",
                 "port": "out"
             },
             "tgt": {
-                "process": "powertechnician/CollectStations_lxsj2",
-                "port": "in"
+                "process": "powertechnician/CollectStations_h0h8t",
+                "port": "stations"
             },
             "metadata": {
                 "route": 0
@@ -156,29 +166,14 @@
         },
         {
             "src": {
-                "process": "subprocess/Execute_xuzrd",
-                "port": "error"
+                "process": "powertechnician/CollectStations_h0h8t",
+                "port": "stations"
             },
             "tgt": {
-                "process": "powertechnician/CollectStations_lxsj2",
-                "port": "in"
+                "process": "powertechnician/CollectStations_h0h8t",
+                "port": "stations"
             },
-            "metadata": {
-                "route": 1
-            }
-        },
-        {
-            "src": {
-                "process": "powertechnician/GetWeather_a6tx1",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "powertechnician/CollectStations_3bf58",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 0
-            }
+            "metadata": {}
         }
     ]
 }

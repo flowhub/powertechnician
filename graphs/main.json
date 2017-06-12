@@ -8,8 +8,30 @@
         "description": "Web server for the power technician",
         "icon": "globe"
     },
-    "inports": {},
-    "outports": {},
+    "inports": {
+        "forecast": {
+            "process": "powertechnician/GetStationForecast_qxs5x",
+            "port": "forecast",
+            "metadata": {
+                "x": 792,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "outports": {
+        "station": {
+            "process": "powertechnician/GetStationForecast_qxs5x",
+            "port": "station",
+            "metadata": {
+                "x": 936,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
     "groups": [
         {
             "name": "Basic server config",
