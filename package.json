@@ -6,7 +6,8 @@
   "scripts": {
     "test": "grunt test",
     "postinstall": "./node_modules/.bin/noflo-cache-preheat",
-    "start": "./node_modules/.bin/noflo-nodejs --graph graphs/main.json"
+    "start": "./node_modules/.bin/noflo-nodejs --graph graphs/main.json",
+    "dev": "./node_modules/.bin/noflo-nodejs"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "noflo-filesystem": "^1.1.1",
     "noflo-objects": "^0.3.0",
     "noflo-strings": "^0.3.0",
+    "noflo-subprocess": "^0.1.0",
     "noflo-xpress": "^0.4.1"
   }
 }
