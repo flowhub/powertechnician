@@ -19,8 +19,9 @@ exports.getComponent = function() {
     }
     var station = input.getData('in');
     metarFetcher.getData(station.icao).then(function (data) {
+      var clean = data.split("\n")[1];
       output.sendDone({
-        out: metarParser(data)
+        out: metarParser(clean)
       });
     }, function (err) {
       output.done(err);
