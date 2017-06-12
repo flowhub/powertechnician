@@ -81,6 +81,36 @@
                 "width": 72,
                 "height": 72
             }
+        },
+        "powertechnician/ListStations_x9zv3": {
+            "component": "powertechnician/ListStations",
+            "metadata": {
+                "label": "ListStations",
+                "x": 720,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "xpress/Router_6rzcw": {
+            "component": "xpress/Router",
+            "metadata": {
+                "label": "Router",
+                "x": 576,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Repeat_dsv3r": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "Repeat",
+                "x": 468,
+                "y": -36,
+                "width": 72,
+                "height": 72
+            }
         }
     },
     "connections": [
@@ -185,6 +215,39 @@
             }
         },
         {
+            "src": {
+                "process": "StaticServer",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "xpress/Router_6rzcw",
+                "port": "app"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "core/Repeat_dsv3r",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "xpress/Router_6rzcw",
+                "port": "pattern"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "xpress/Router_6rzcw",
+                "port": "req"
+            },
+            "tgt": {
+                "process": "powertechnician/ListStations_x9zv3",
+                "port": "req"
+            },
+            "metadata": {}
+        },
+        {
             "data": "VCAP_APP_PORT",
             "tgt": {
                 "process": "PortFromEnv",
@@ -216,6 +279,20 @@
             "data": "stations.json",
             "tgt": {
                 "process": "filesystem/ReadFileRaw_ycv9j",
+                "port": "in"
+            }
+        },
+        {
+            "data": "/",
+            "tgt": {
+                "process": "xpress/Router_6rzcw",
+                "port": "path"
+            }
+        },
+        {
+            "data": "get /",
+            "tgt": {
+                "process": "core/Repeat_dsv3r",
                 "port": "in"
             }
         }
