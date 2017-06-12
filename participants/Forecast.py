@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
 
 import msgflo
+import sys
 from random import *
 
 class Forecast(msgflo.Participant):
@@ -31,4 +32,5 @@ class Forecast(msgflo.Participant):
     self.ack(msg)
 
 if __name__ == '__main__':
-  msgflo.main(Forecast)
+  role = sys.argv[1] if len(sys.argv) > 1 else 'Forecast'
+  msgflo.main(Forecast, role)
