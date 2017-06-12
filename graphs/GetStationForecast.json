@@ -20,7 +20,7 @@
             }
         },
         "forecast": {
-            "process": "Receive",
+            "process": "powertechnician/ReceiveForecast_n01p2",
             "port": "in",
             "metadata": {
                 "x": 1476,
@@ -41,21 +41,21 @@
                 "height": 72
             }
         },
-        "power": {
-            "process": "Receive",
-            "port": "out",
-            "metadata": {
-                "x": 1692,
-                "y": 72,
-                "width": 72,
-                "height": 72
-            }
-        },
         "stations": {
             "process": "Send",
             "port": "out",
             "metadata": {
                 "x": 1368,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "power": {
+            "process": "powertechnician/ReceiveForecast_n01p2",
+            "port": "out",
+            "metadata": {
+                "x": 1692,
                 "y": 72,
                 "width": 72,
                 "height": 72
@@ -94,21 +94,21 @@
                 "height": 72
             }
         },
-        "Receive": {
-            "component": "core/Repeat",
-            "metadata": {
-                "label": "Receive",
-                "x": 1584,
-                "y": 72,
-                "width": 72,
-                "height": 72
-            }
-        },
         "Send": {
             "component": "core/Repeat",
             "metadata": {
                 "label": "Send",
                 "x": 1260,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "powertechnician/ReceiveForecast_n01p2": {
+            "component": "powertechnician/ReceiveForecast",
+            "metadata": {
+                "label": "ReceiveForecast",
+                "x": 1584,
                 "y": 72,
                 "width": 72,
                 "height": 72
@@ -126,7 +126,7 @@
                 "port": "in"
             },
             "metadata": {
-                "route": null
+                "route": 6
             }
         },
         {
@@ -137,6 +137,9 @@
             "tgt": {
                 "process": "powertechnician/CollectStream_tcixc",
                 "port": "in"
+            },
+            "metadata": {
+                "route": 6
             }
         },
         {
@@ -148,7 +151,22 @@
                 "process": "Send",
                 "port": "in"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "powertechnician/CollectStream_tcixc",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "powertechnician/ReceiveForecast_n01p2",
+                "port": "stations"
+            },
+            "metadata": {
+                "route": 5
+            }
         }
     ]
 }
