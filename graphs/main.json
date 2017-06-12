@@ -1,0 +1,60 @@
+{
+    "caseSensitive": false,
+    "properties": {
+        "name": "main",
+        "environment": {
+            "type": "msgflo"
+        },
+        "description": "MsgFlo runner for power technician",
+        "icon": "bolt"
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "powertechnician/Server_6dtv4": {
+            "component": "powertechnician/Server",
+            "metadata": {
+                "label": "Server",
+                "x": 540,
+                "y": 288,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "powertechnician/Forecast_uooet": {
+            "component": "powertechnician/Forecast",
+            "metadata": {
+                "label": "Forecast",
+                "x": 720,
+                "y": 288,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "powertechnician/Forecast_uooet",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "powertechnician/Server_6dtv4",
+                "port": "forecast"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "powertechnician/Server_6dtv4",
+                "port": "station"
+            },
+            "tgt": {
+                "process": "powertechnician/Forecast_uooet",
+                "port": "in"
+            },
+            "metadata": {}
+        }
+    ]
+}
