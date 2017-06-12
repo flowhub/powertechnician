@@ -10,53 +10,53 @@
     },
     "inports": {
         "in": {
-            "process": "core/Split_ao8wx",
+            "process": "objects/SplitArray_fm8kl",
             "port": "in",
             "metadata": {
-                "x": 576,
-                "y": 36,
+                "x": 720,
+                "y": -72,
                 "width": 72,
                 "height": 72
             }
         },
         "forecast": {
-            "process": "powertechnician/CollectStations_h0h8t",
-            "port": "forecast",
+            "process": "Forward",
+            "port": "in",
             "metadata": {
-                "x": 1152,
-                "y": 36,
+                "x": 1332,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
         }
     },
     "outports": {
-        "station": {
-            "process": "powertechnician/GetWeather_a6tx1",
-            "port": "out",
-            "metadata": {
-                "x": 1080,
-                "y": 36,
-                "width": 72,
-                "height": 72
-            }
-        },
         "weather": {
             "process": "powertechnician/CollectStream_tcixc",
             "port": "out",
             "metadata": {
-                "x": 1440,
+                "x": 1548,
                 "y": -72,
                 "width": 72,
                 "height": 72
             }
         },
         "power": {
-            "process": "powertechnician/CollectStations_h0h8t",
-            "port": "ready",
+            "process": "Forward",
+            "port": "out",
             "metadata": {
-                "x": 1440,
-                "y": 144,
+                "x": 1548,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "stations": {
+            "process": "powertechnician/CollectStream_tcixc",
+            "port": "out",
+            "metadata": {
+                "x": 1224,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
@@ -84,32 +84,22 @@
                 "height": 72
             }
         },
-        "core/Split_ao8wx": {
-            "component": "core/Split",
-            "metadata": {
-                "label": "Split",
-                "x": 684,
-                "y": 36,
-                "width": 72,
-                "height": 72
-            }
-        },
         "powertechnician/CollectStream_tcixc": {
             "component": "powertechnician/CollectStream",
             "metadata": {
                 "label": "CollectStream",
-                "x": 1296,
+                "x": 1116,
                 "y": -72,
                 "width": 72,
                 "height": 72
             }
         },
-        "powertechnician/CollectStations_h0h8t": {
-            "component": "powertechnician/CollectStations",
+        "Forward": {
+            "component": "core/Repeat",
             "metadata": {
-                "label": "CollectStations",
-                "x": 1296,
-                "y": 144,
+                "label": "Forward",
+                "x": 1440,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
@@ -131,49 +121,13 @@
         },
         {
             "src": {
-                "process": "core/Split_ao8wx",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "objects/SplitArray_fm8kl",
-                "port": "in"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
                 "process": "powertechnician/GetWeather_a6tx1",
                 "port": "out"
             },
             "tgt": {
                 "process": "powertechnician/CollectStream_tcixc",
                 "port": "in"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "core/Split_ao8wx",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "powertechnician/CollectStations_h0h8t",
-                "port": "stations"
-            },
-            "metadata": {
-                "route": 0
             }
-        },
-        {
-            "src": {
-                "process": "powertechnician/CollectStations_h0h8t",
-                "port": "stations"
-            },
-            "tgt": {
-                "process": "powertechnician/CollectStations_h0h8t",
-                "port": "stations"
-            },
-            "metadata": {}
         }
     ]
 }
