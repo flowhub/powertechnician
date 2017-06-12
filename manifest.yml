@@ -3,8 +3,7 @@ applications:
 - name: powertechnician
   memory: 256M
   buildpack: nodejs_buildpack
-  command: node ./node_modules/.bin/noflo-runtime-msgflo --name Server --cache=true --graph powertechnician/Server
-  postinstall: node ./node_modules/.bin/msgflo-setup --discover=false graphs/main.json
+  command: node ./node_modules/.bin/msgflo --runtime-id=fa74a16a-35b0-4a54-b587-97e906471f8c --graph=graphs/main.json --ignore=Forecast
   services:
   - msgflo
 - name: powertechnician-forecaster
