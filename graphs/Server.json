@@ -308,7 +308,7 @@
             }
         },
         {
-            "data": "VCAP_APP_PORT",
+            "data": "PORT",
             "tgt": {
                 "process": "PortFromEnv",
                 "port": "key"
