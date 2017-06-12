@@ -1,0 +1,17 @@
+{
+  "id": "fa74a16a-35b0-4a54-b587-97e906471f8c",
+  "host": "localhost",
+  "label": "Local powertechnician",
+  "port": 3569,
+  "secret": "%B,l0xVn",
+  "permissions": {
+    "%B,l0xVn": [
+      "protocol:component",
+      "protocol:runtime",
+      "protocol:graph",
+      "protocol:network",
+      "component:getsource",
+      "component:setsource"
+    ]
+  }
+}
