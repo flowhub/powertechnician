@@ -1,0 +1,19 @@
+{
+  "name": "powertechnician",
+  "version": "1.0.0",
+  "description": "Power to the Power Technician",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flowhub/powertechnician.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flowhub/powertechnician/issues"
+  },
+  "homepage": "https://github.com/flowhub/powertechnician#readme"
+}
