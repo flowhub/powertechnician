@@ -16,8 +16,8 @@
             "component": "xpress/Server",
             "metadata": {
                 "label": "Server",
-                "x": 334,
-                "y": 100,
+                "x": 324,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -26,17 +26,27 @@
             "component": "core/ReadEnv",
             "metadata": {
                 "label": "PortFromEnv",
-                "x": 108,
+                "x": 36,
                 "y": 108,
                 "width": 72,
                 "height": 72
             }
         },
-        "DefaultPort": {
-            "component": "core/Kick",
+        "StaticServer": {
+            "component": "powertechnician/ServeStatics",
             "metadata": {
-                "label": "DefaultPort",
-                "x": 216,
+                "label": "StaticServer",
+                "x": 468,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "strings/SendString_r31ot": {
+            "component": "strings/SendString",
+            "metadata": {
+                "label": "SendString",
+                "x": 180,
                 "y": 180,
                 "width": 72,
                 "height": 72
@@ -59,11 +69,22 @@
         },
         {
             "src": {
+                "process": "xpress/Server_vp14o",
+                "port": "app"
+            },
+            "tgt": {
+                "process": "StaticServer",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
                 "process": "PortFromEnv",
                 "port": "error"
             },
             "tgt": {
-                "process": "DefaultPort",
+                "process": "strings/SendString_r31ot",
                 "port": "in"
             },
             "metadata": {
@@ -72,7 +93,7 @@
         },
         {
             "src": {
-                "process": "DefaultPort",
+                "process": "strings/SendString_r31ot",
                 "port": "out"
             },
             "tgt": {
@@ -91,10 +112,24 @@
             }
         },
         {
+            "data": "/static",
+            "tgt": {
+                "process": "StaticServer",
+                "port": "prefix"
+            }
+        },
+        {
+            "data": "static",
+            "tgt": {
+                "process": "StaticServer",
+                "port": "path"
+            }
+        },
+        {
             "data": "5000",
             "tgt": {
-                "process": "DefaultPort",
-                "port": "data"
+                "process": "strings/SendString_r31ot",
+                "port": "string"
             }
         }
     ]
