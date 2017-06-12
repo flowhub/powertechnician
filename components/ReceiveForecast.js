@@ -5,7 +5,7 @@ exports.getComponent = function() {
   c.description = 'Receive Forecast results';
   c.icon = 'forward';
   c.inPorts.add('stations', {
-    datatype: 'object'
+    datatype: 'bang'
   });
   c.inPorts.add('in', {
     datatype: 'array'
@@ -13,11 +13,27 @@ exports.getComponent = function() {
   c.outPorts.add('out', {
     datatype: 'array'
   });
+  c.forecastScopes = [];
+  c.tearDown = function (callback) {
+    c.forecastScopes = [];
+    callback();
+  };
   c.process(function (input, output) {
-    console.log(input.scope, input.hasData('stations'), input.hasData('in'));
-    if (!input.hasData('stations')) {
+    if (input.hasData('stations')) {
+      // We need the request scope
+      input.getData('stations');
+      c.forecastScopes.push(input.scope);
+      return output.done();
+    }
+    if (!input.hasData('in')) {
       return;
     }
+    var data = input.getData('in');
+    output.send({
+      out: new noflo.IP('data', data, {
+        scope: c.forecastScopes.shift()
+      })
+    });
     output.done();
     
   });
