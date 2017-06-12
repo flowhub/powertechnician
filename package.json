@@ -6,7 +6,7 @@
   "scripts": {
     "test": "grunt test",
     "postinstall": "./node_modules/.bin/noflo-cache-preheat",
-    "start": "./node_modules/.bin/noflo-nodejs --graph graphs/Server.json",
+    "start": "./node_modules/.bin/msgflo --broker=mqtt://localhost --auto-save=true --runtime-id=fa74a16a-35b0-4a54-b587-97e906471f8c --graph=graphs/main.json",
     "dev": "./node_modules/.bin/noflo-nodejs"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "grunt": "^1.0.1",
     "grunt-mocha-test": "^0.13.2",
     "mocha": "^3.4.2",
+    "msgflo": "^0.10.25",
     "noflo-nodejs": "^0.8.1"
   },
   "dependencies": {
@@ -34,8 +35,18 @@
     "noflo-core": "^0.4.0",
     "noflo-filesystem": "^1.1.1",
     "noflo-objects": "^0.3.0",
+    "noflo-runtime-msgflo": "^0.11.3",
     "noflo-strings": "^0.3.0",
     "noflo-subprocess": "^0.1.0",
     "noflo-xpress": "^0.4.1"
+  },
+  "msgflo": {
+    "namespace": "powertechnician",
+    "variables": {
+      "NOFLO": "node ./node_modules/.bin/noflo-runtime-msgflo --name #ROLE --graph #COMPONENT  --cache true"
+    },
+    "components": {
+      "powertechnician/Server": "#NOFLO"
+    }
   }
 }
