@@ -3,4 +3,8 @@ applications:
 - name: powertechnician
   memory: 256M
   buildpack: nodejs_buildpack
-  command: node ./node_modules/.bin/noflo-runtime-msgflo --name server --cache=true --graph powertechnician/Server
+  command: node ./node_modules/.bin/noflo-runtime-msgflo --name Server --cache=true --graph powertechnician/Server
+- name: powertechnician-forecaster
+  memory: 125
+  buildpack: python_buildpack
+  command: python ./participants/Forecast.py Forecast
