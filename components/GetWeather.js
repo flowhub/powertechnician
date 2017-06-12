@@ -1,6 +1,7 @@
 var noflo = require('noflo');
 var MetarFetcher = require('metar-taf').MetarFetcher;
-var metar = new MetarFetcher();
+var metarFetcher = new MetarFetcher();
+var metarParser = require('metar');
 
 exports.getComponent = function() {
   var c = new noflo.Component();
@@ -17,9 +18,9 @@ exports.getComponent = function() {
       return;
     }
     var station = input.getData('in');
-    metar.getDecodedData(station.icao).then(function (data) {
+    metarFetcher.getData(station.icao).then(function (data) {
       output.sendDone({
-        out: data
+        out: metarParser(data)
       });
     }, function (err) {
       output.done(err);
