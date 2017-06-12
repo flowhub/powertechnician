@@ -20,10 +20,10 @@
             }
         },
         "forecast": {
-            "process": "Forward",
+            "process": "Receive",
             "port": "in",
             "metadata": {
-                "x": 1332,
+                "x": 1476,
                 "y": 72,
                 "width": 72,
                 "height": 72
@@ -35,27 +35,27 @@
             "process": "powertechnician/CollectStream_tcixc",
             "port": "out",
             "metadata": {
-                "x": 1548,
+                "x": 1692,
                 "y": -72,
                 "width": 72,
                 "height": 72
             }
         },
         "power": {
-            "process": "Forward",
+            "process": "Receive",
             "port": "out",
             "metadata": {
-                "x": 1548,
+                "x": 1692,
                 "y": 72,
                 "width": 72,
                 "height": 72
             }
         },
         "stations": {
-            "process": "powertechnician/CollectStream_tcixc",
+            "process": "Send",
             "port": "out",
             "metadata": {
-                "x": 1224,
+                "x": 1368,
                 "y": 72,
                 "width": 72,
                 "height": 72
@@ -94,11 +94,21 @@
                 "height": 72
             }
         },
-        "Forward": {
+        "Receive": {
             "component": "core/Repeat",
             "metadata": {
-                "label": "Forward",
-                "x": 1440,
+                "label": "Receive",
+                "x": 1584,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "Send": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "Send",
+                "x": 1260,
                 "y": 72,
                 "width": 72,
                 "height": 72
@@ -128,6 +138,17 @@
                 "process": "powertechnician/CollectStream_tcixc",
                 "port": "in"
             }
+        },
+        {
+            "src": {
+                "process": "powertechnician/CollectStream_tcixc",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "Send",
+                "port": "in"
+            },
+            "metadata": {}
         }
     ]
 }

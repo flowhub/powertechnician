@@ -21,9 +21,9 @@
         }
     },
     "outports": {
-        "station": {
+        "stations": {
             "process": "powertechnician/GetStationForecast_qxs5x",
-            "port": "station",
+            "port": "stations",
             "metadata": {
                 "x": 936,
                 "y": 180,
@@ -180,8 +180,7 @@
             "tgt": {
                 "process": "StaticServer",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -217,8 +216,7 @@
             "tgt": {
                 "process": "xpress/Router_6rzcw",
                 "port": "app"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -228,8 +226,7 @@
             "tgt": {
                 "process": "xpress/Router_6rzcw",
                 "port": "pattern"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -239,8 +236,7 @@
             "tgt": {
                 "process": "powertechnician/ListStations_x9zv3",
                 "port": "req"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -250,8 +246,7 @@
             "tgt": {
                 "process": "xpress/Router_6rzcw",
                 "port": "pattern"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -287,8 +282,7 @@
             "tgt": {
                 "process": "SendResults",
                 "port": "req"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -311,8 +305,7 @@
             "tgt": {
                 "process": "SendResults",
                 "port": "data"
-            },
-            "metadata": {}
+            }
         },
         {
             "data": "VCAP_APP_PORT",
