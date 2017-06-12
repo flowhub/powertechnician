@@ -32,7 +32,7 @@ exports.getComponent = function() {
       return {
         lat: station.lat,
         lon: station.lon,
-        data: ip.data
+        data: parseFloat(ip.data)
       };
     });
 	req.res.json(data);
