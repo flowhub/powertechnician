@@ -11,28 +11,20 @@ exports.getComponent = function() {
     datatype: 'array'
   });
   c.inPorts.add('data', {
-    datatype: 'number'
+    datatype: 'array'
   });
   c.process(function (input, output) {
-    if (!input.hasData('req', 'stations')) {
-      return;
-    }
-    if (!input.hasStream('data')) {
+    if (!input.hasData('req', 'stations', 'data')) {
       return;
     }
     var req = input.getData('req');
     var stations = input.getData('stations');
-    var data = input.getStream('data').filter(function (ip) {
-      if (ip.type != 'data') {
-        return false;
-      }
-      return true;
-    }).map(function (ip, idx) {
+    var data = input.getData('data').map(function (d, idx) {
       var station = stations[idx];
       return {
         lat: station.lat,
         lon: station.lon,
-        data: parseFloat(ip.data)
+        data: parseFloat(d)
       };
     });
 	req.res.json(data);
