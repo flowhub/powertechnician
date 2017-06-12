@@ -24,7 +24,7 @@ exports.getComponent = function() {
       return {
         lat: station.lat,
         lon: station.lon,
-        data: parseFloat(d)
+        data: parseFloat(d.forecast)
       };
     });
 	req.res.json(data);

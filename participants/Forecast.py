@@ -24,7 +24,7 @@ class Forecast(msgflo.Participant):
     for station in msg.data:
         forecast = station.copy()
         # TODO: Plug in real forecast
-        forecast['data'] = random()
+        forecast['forecast'] = random()
         forecast['icao'] = station['station']
         output.append(forecast)
 
