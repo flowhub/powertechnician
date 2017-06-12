@@ -57,7 +57,7 @@
             "metadata": {
                 "label": "ListStations",
                 "x": 684,
-                "y": -36,
+                "y": -144,
                 "width": 72,
                 "height": 72
             }
@@ -77,7 +77,57 @@
             "metadata": {
                 "label": "Repeat",
                 "x": 468,
+                "y": -144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SplitArray_fm8kl": {
+            "component": "objects/SplitArray",
+            "metadata": {
+                "label": "SplitArray",
+                "x": 828,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "powertechnician/GetStations_c5qbj": {
+            "component": "powertechnician/GetStations",
+            "metadata": {
+                "label": "GetStations",
+                "x": 720,
                 "y": -36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Repeat_iwi2l": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "Repeat",
+                "x": 468,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "SendResults": {
+            "component": "powertechnician/SendStationResults",
+            "metadata": {
+                "label": "SendResults",
+                "x": 1080,
+                "y": -36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "powertechnician/GetWeather_a6tx1": {
+            "component": "powertechnician/GetWeather",
+            "metadata": {
+                "label": "GetWeather",
+                "x": 936,
+                "y": 36,
                 "width": 72,
                 "height": 72
             }
@@ -168,6 +218,89 @@
             "metadata": {}
         },
         {
+            "src": {
+                "process": "core/Repeat_iwi2l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "xpress/Router_6rzcw",
+                "port": "pattern"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "xpress/Router_6rzcw",
+                "port": "req"
+            },
+            "tgt": {
+                "process": "powertechnician/GetStations_c5qbj",
+                "port": "req"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "powertechnician/GetStations_c5qbj",
+                "port": "stations"
+            },
+            "tgt": {
+                "process": "objects/SplitArray_fm8kl",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "powertechnician/GetStations_c5qbj",
+                "port": "stations"
+            },
+            "tgt": {
+                "process": "SendResults",
+                "port": "stations"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "powertechnician/GetStations_c5qbj",
+                "port": "req"
+            },
+            "tgt": {
+                "process": "SendResults",
+                "port": "req"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SplitArray_fm8kl",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "powertechnician/GetWeather_a6tx1",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "powertechnician/GetWeather_a6tx1",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "SendResults",
+                "port": "data"
+            },
+            "metadata": {}
+        },
+        {
             "data": "VCAP_APP_PORT",
             "tgt": {
                 "process": "PortFromEnv",
@@ -206,6 +339,13 @@
             "data": "get /",
             "tgt": {
                 "process": "core/Repeat_dsv3r",
+                "port": "in"
+            }
+        },
+        {
+            "data": "get /status",
+            "tgt": {
+                "process": "core/Repeat_iwi2l",
                 "port": "in"
             }
         }
