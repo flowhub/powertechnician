@@ -1,7 +1,7 @@
 {
     "caseSensitive": false,
     "properties": {
-        "name": "main",
+        "name": "Server",
         "environment": {
             "type": "noflo-nodejs"
         },

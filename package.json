@@ -6,7 +6,7 @@
   "scripts": {
     "test": "grunt test",
     "postinstall": "./node_modules/.bin/noflo-cache-preheat",
-    "start": "./node_modules/.bin/noflo-nodejs --graph graphs/main.json",
+    "start": "./node_modules/.bin/noflo-nodejs --graph graphs/Server.json",
     "dev": "./node_modules/.bin/noflo-nodejs"
   },
   "repository": {
