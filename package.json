@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/flowhub/powertechnician/issues"
   },
-  "homepage": "https://github.com/flowhub/powertechnician#readme"
+  "homepage": "https://github.com/flowhub/powertechnician#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "noflo-nodejs": "^0.8.1"
+  },
+  "dependencies": {
+    "noflo": "^0.8.3",
+    "noflo-xpress": "^0.4.1"
+  }
 }
