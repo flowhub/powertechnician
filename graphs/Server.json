@@ -30,6 +30,16 @@
                 "width": 72,
                 "height": 72
             }
+        },
+        "received": {
+            "process": "powertechnician/GetStationForecast_qxs5x",
+            "port": "received",
+            "metadata": {
+                "x": 1080,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
         }
     },
     "groups": [

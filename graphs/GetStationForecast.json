@@ -60,6 +60,16 @@
                 "width": 72,
                 "height": 72
             }
+        },
+        "received": {
+            "process": "powertechnician/ReceiveForecast_n01p2",
+            "port": "received",
+            "metadata": {
+                "x": 1692,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
         }
     },
     "groups": [],

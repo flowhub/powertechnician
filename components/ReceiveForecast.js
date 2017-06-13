@@ -13,10 +13,16 @@ exports.getComponent = function() {
   c.outPorts.add('out', {
     datatype: 'array'
   });
+  c.outPorts.add('received', {
+    datatype: 'array'
+  });
   c.forecastScopes = [];
   c.tearDown = function (callback) {
     c.forecastScopes = [];
     callback();
+  };
+  c.forwardBrackets = {
+    in: ['received']
   };
   c.process(function (input, output) {
     if (input.hasData('stations')) {
@@ -29,6 +35,9 @@ exports.getComponent = function() {
       return;
     }
     var data = input.getData('in');
+    output.send({
+      received: data
+    });
     output.send({
       out: new noflo.IP('data', data, {
         scope: c.forecastScopes.shift()
