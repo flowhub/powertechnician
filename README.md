@@ -2,7 +2,7 @@
 
 Electricity consumption forecasts for a changing climate. Modeled on [Irish energy data](https://github.com/PredixDev/minds-machines-europe/tree/master/Electrification%20Challenge/Grid%20Timeseries%20Dataset/LoadForecasting) at the GE Minds+Machines hackathon.
 
-<https://powertechnician.run.aws-usw02-pr.ice.predix.io/forecast>
+<https://powertechnician.run.aws-usw02-pr.ice.predix.io/demo>
 
 ## Installation
 
