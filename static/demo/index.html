@@ -60,7 +60,7 @@
 
 		var request = new XMLHttpRequest();
 
-		request.open("GET", "../forecast.json");
+		request.open("GET", "/forecast");
 		//request.open("GET", "https://powertechnician.run.aws-usw02-pr.ice.predix.io/forecast");
 		request.addEventListener('load', function (event) {
 			if (request.status >= 200 && request.status < 300) {
