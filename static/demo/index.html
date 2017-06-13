@@ -3,8 +3,8 @@
 
 <head>
 	<title>electrocute demo</title>
-	<link rel="stylesheet" href="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-	<script src="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	<link rel="stylesheet" href="//cdn.leafletjs.com/leaflet/v1.0.3/leaflet.css" />
+	<script src="//cdn.leafletjs.com/leaflet/v1.0.3/leaflet.js"></script>
 	<style>
 		html,
 		body {
@@ -75,12 +75,21 @@
 		function draw(addressPoints) {
 			var heat = L.heatLayer(addressPoints, {
 				minOpacity: 0.7,
-				maxZoom: 5,
-				radius: 30,
-				blur: 50,
+				maxZoom: 1,
+				radius: 40,
+				blur: 60,
 				max: 1.0,
-				gradient: {0.5: 'green', 0.75: 'yellow', 0.9: 'red'}
+				gradient: { 0.5: 'green', 0.75: 'yellow', 0.9: 'red' }
 			}).addTo(map);
+
+			addressPoints.forEach(function (p) {
+				L.marker(p, {
+					opacity: 0
+				}).bindTooltip('' + p[2], {
+					offset: new L.Point(1, 20),
+					direction: 'top'
+				}).addTo(map);
+			}, this);
 		}
 	</script>
 </body>
