@@ -1,8 +1,10 @@
 #!/usr/bin/env python2
 
 import msgflo
-import sys
 from random import *
+import sys
+sys.path.append('../')
+from forecast import predict_consumption
 
 class Forecast(msgflo.Participant):
   def __init__(self, role):
