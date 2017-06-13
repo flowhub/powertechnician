@@ -6,13 +6,23 @@ Electricity consumption forecasts for a changing climate. Modeled on [Irish ener
 
 ## Installation
 
-Run:
+Install the Node.js dependencies with:
 
 ```
 $ npm install
 ```
 
+Install the Python dependencies with:
+
+```
+$ pip install -r requirements.txt
+```
+
+You'll also need a running [RabbitMQ](https://www.rabbitmq.com/) instance.
+
 ## Development
+
+Point to your RabbitMQ instance with the `MSGFLO_BROKER` environment variable.
 
 To start the local dev server, run:
 
@@ -20,7 +30,13 @@ To start the local dev server, run:
 $ npm start
 ```
 
-If you want to live program the [NoFlo](https://noflojs.org) graph, open the URL shown on console.
+If you want to live program the [NoFlo](https://noflojs.org) graph, run:
+
+```
+$ npm run dev
+```
+
+Then open the URL shown on console.
 
 ## Testing
 
