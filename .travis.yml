@@ -3,3 +3,13 @@ dist: trusty
 sudo: false
 node_js:
 - '6'
+services:
+- rabbitmq
+install:
+- npm install
+- pip install -r requirements.txt --user
+before_script:
+- npm install -g grunt-cli
+env:
+  matrix:
+    - MSGFLO_BROKER=amqp://localhost PATH=$PATH:$HOME/.local/bin
