@@ -36,4 +36,17 @@ describe('Server', function () {
       });
     });
   });
+  describe('serving a forecast', function () {
+    it('should return one', function (done) {
+      this.timeout(4000);
+      req('/forecast', function (err, result) {
+        if (err) {
+          return done(err);
+        }
+        chai.expect(result.length).to.eql(stations.length);
+        chai.expect(result[0].data).to.be.a('number');
+        done();
+      });
+    });
+  });
 });
