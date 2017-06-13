@@ -325,13 +325,6 @@
             }
         },
         {
-            "data": "/static",
-            "tgt": {
-                "process": "StaticServer",
-                "port": "prefix"
-            }
-        },
-        {
             "data": "static",
             "tgt": {
                 "process": "StaticServer",
@@ -364,6 +357,13 @@
             "tgt": {
                 "process": "core/Repeat_iwi2l",
                 "port": "in"
+            }
+        },
+        {
+            "data": "/",
+            "tgt": {
+                "process": "StaticServer",
+                "port": "prefix"
             }
         }
     ]
