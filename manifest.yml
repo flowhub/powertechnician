@@ -11,6 +11,6 @@ applications:
 - name: powertechnician
   memory: 256M
   buildpack: nodejs_buildpack
-  command: node ./node_modules/.bin/msgflo --runtime-id=fa74a16a-35b0-4a54-b587-97e906471f8c --graph=graphs/main.json --ignore=Forecast
+  command: node ./node_modules/.bin/msgflo --runtime-id=fa74a16a-35b0-4a54-b587-97e906471f8c --graph=graphs/main.json --ignore Forecast --ping-interval 600 --wait-timeout 500
   services:
   - msgflo
