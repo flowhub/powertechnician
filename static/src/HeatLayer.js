@@ -2,13 +2,13 @@
 
 L.HeatLayer = (L.Layer ? L.Layer : L.Class).extend({
 
-    // options: {
-    //     minOpacity: 0.05,
-    //     maxZoom: 18,
-    //     radius: 25,
-    //     blur: 15,
-    //     max: 1.0
-    // },
+     options: {
+         minOpacity: 0.7,
+         maxZoom: 8,
+         radius: 10,
+         blur: 30,
+         max: 1.0
+    },
 
     initialize: function (latlngs, options) {
         this._latlngs = latlngs;
