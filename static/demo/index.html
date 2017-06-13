@@ -51,15 +51,12 @@
 
 	<script src="../dist/leaflet-heat.js"></script>
 
-	<script src="datapoints.js"></script>
 	<script>
 		var map = L.map('map').setView([53.266453, -7.638463], 7);
 
 		var tiles = L.tileLayer('//{s}.tile.osm.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
 		}).addTo(map);
-
-		addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 
 		var request = new XMLHttpRequest();
 
