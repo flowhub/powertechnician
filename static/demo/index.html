@@ -6,7 +6,8 @@
 	<link rel="stylesheet" href="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 	<script src="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 	<style>
-		html, body {
+		html,
+		body {
 			margin: 0;
 			height: 100%;
 		}
@@ -60,14 +61,28 @@
 
 		addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 
-		var heat = L.heatLayer(addressPoints, {
-			minOpacity: 0.7,
-			maxZoom: 10,
-			radius: 50,
-			blur: 100,
-			max: 1.0
-		}).addTo(map);
+		var request = new XMLHttpRequest();
 
+		request.open("GET", "../forecast.json");
+		request.addEventListener('load', function (event) {
+			if (request.status >= 200 && request.status < 300) {
+				var json = JSON.parse(request.responseText).map(function (p) { return [p.lat, p.lon]; });
+				draw(json);
+			} else {
+				console.warn(request.statusText, request.responseText);
+			}
+		});
+		request.send();
+
+		function draw(addressPoints) {
+			var heat = L.heatLayer(addressPoints, {
+				minOpacity: 0.7,
+				maxZoom: 10,
+				radius: 60,
+				blur: 60,
+				max: 1.0
+			}).addTo(map);
+		}
 	</script>
 </body>
 
