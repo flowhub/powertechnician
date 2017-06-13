@@ -2,11 +2,13 @@
 var stations = require('../stations.json');
 var Promise = require('bluebird');
 var MetarFetcher = require('metar-taf').MetarFetcher;
-var metar = new MetarFetcher();
+var metarFetcher = new MetarFetcher();
+var metarParser = require('metar');
 
 Promise.map(stations, function (station) {
-  metar.getDecodedData(station.icao)
+  metarFetcher.getData(station.icao)
   .then(function (data) {
-    console.log(station.name, data);
+    var clean = data.split("\n")[1];
+    console.log(metarParser(clean));
   });
 });
