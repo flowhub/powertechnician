@@ -1,0 +1,13 @@
+readme for arduino_monster
+
+Light up two LEDs with a press of a button.
+Arduino, base shield, Grove LEDs and button required.
+
+connect one LED to digital port D3
+connect one LED to digital port D4
+connect button to digital port D2
+
+based on: Turn ON an LED with a Button and Arduino – Tutorial #4 by P. MARIAN
+http://www.electroschematics.com/8964/turn-on-led-button-arduino/
+
+enjoy ;)
