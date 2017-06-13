@@ -1,14 +1,16 @@
 ---
 applications:
+- name: powertechnician-forecaster
+  memory: 128M
+  buildpack: python_buildpack
+  command: python ./participants/Forecast.py Forecast
+  no-route: true
+  health-check-type: process
+  services:
+  - msgflo
 - name: powertechnician
   memory: 256M
   buildpack: nodejs_buildpack
   command: node ./node_modules/.bin/msgflo --runtime-id=fa74a16a-35b0-4a54-b587-97e906471f8c --graph=graphs/main.json --ignore=Forecast
-  services:
-  - msgflo
-- name: powertechnician-forecaster
-  memory: 125M
-  buildpack: python_buildpack
-  command: python ./participants/Forecast.py Forecast
   services:
   - msgflo
