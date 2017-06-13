@@ -1,8 +1,6 @@
 # powertechnician
 
-Power to the Power Technician
-
-Data we need for the front-end: JSON with data points: [50.5, 30.5, 0.2], // lat, lng, intensity from 0 to 1
+Electricity consumption forecasts for a changing climate. Modeled on [Irish energy data](https://github.com/PredixDev/minds-machines-europe/tree/master/Electrification%20Challenge/Grid%20Timeseries%20Dataset/LoadForecasting) at the GE Minds+Machines hackathon.
 
 <https://powertechnician.run.aws-usw02-pr.ice.predix.io/forecast>
 
