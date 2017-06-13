@@ -261,7 +261,7 @@ df_merged['data_str']=df_merged['date_all'].astype(str)
 
 # In[154]:
 
-df_merged['data_str']..weekday()
+df_merged['data_str'].weekday()
 
 
 # In[174]:
