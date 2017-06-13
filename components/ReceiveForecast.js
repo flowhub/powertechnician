@@ -31,17 +31,17 @@ exports.getComponent = function() {
       c.forecastScopes.push(input.scope);
       return output.done();
     }
-    if (!input.hasData('in')) {
+    if (!input.hasStream('in')) {
       return;
     }
     var data = input.getData('in');
     output.send({
-      received: data
-    });
-    output.send({
       out: new noflo.IP('data', data, {
         scope: c.forecastScopes.shift()
       })
+    });
+    output.send({
+      received: data
     });
     output.done();
     
