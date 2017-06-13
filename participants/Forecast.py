@@ -28,7 +28,7 @@ class Forecast(msgflo.Participant):
         forecast = station.copy()
         dof = datetime.datetime.today().weekday()
         hour = datetime.datetime.today().hour
-        # predict_consumption (wdsp,temp,rhum,date_day_code,hour)
+        # TODO: Calculate humidity from dewpoint
         value = predict_consumption(station['wind']['speed'],station['temperature'],78.666667,dof,hour)
         print station
         print value
