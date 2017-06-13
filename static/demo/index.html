@@ -61,9 +61,10 @@
 		var request = new XMLHttpRequest();
 
 		request.open("GET", "../forecast.json");
+		//request.open("GET", "https://powertechnician.run.aws-usw02-pr.ice.predix.io/forecast");
 		request.addEventListener('load', function (event) {
 			if (request.status >= 200 && request.status < 300) {
-				var json = JSON.parse(request.responseText).map(function (p) { return [p.lat, p.lon]; });
+				var json = JSON.parse(request.responseText).map(function (p) { return [p.lat, p.lon, p.data]; });
 				draw(json);
 			} else {
 				console.warn(request.statusText, request.responseText);
@@ -74,10 +75,11 @@
 		function draw(addressPoints) {
 			var heat = L.heatLayer(addressPoints, {
 				minOpacity: 0.7,
-				maxZoom: 10,
-				radius: 60,
-				blur: 60,
-				max: 1.0
+				maxZoom: 5,
+				radius: 25,
+				blur: 50,
+				max: 1.0,
+				gradient: {0.25: 'green', 0.5: 'yellow', 0.75: 'red'}
 			}).addTo(map);
 		}
 	</script>
