@@ -1,3 +1,5 @@
+{spawn} = require 'child_process'
+
 module.exports = ->
   # Project configuration
   @initConfig
@@ -15,5 +17,22 @@ module.exports = ->
   @loadNpmTasks 'grunt-mocha-test'
 
   @registerTask 'test', [
+    'startRuntime'
     'mochaTest'
+    'stopRuntime'
   ]
+  @registerTask 'startRuntime', ->
+    done = @async()
+    runtime = spawn 'node', [
+      "./node_modules/.bin/msgflo --graph=graphs/main.json"
+    ]
+    setTimeout ->
+      done()
+    , 4000
+  @registerTask 'stopRuntime', ->
+    return unless runtime
+    done = @async()
+    runtime.on 'close', ->
+      runtime = null
+      done()
+    runtime.kill()
