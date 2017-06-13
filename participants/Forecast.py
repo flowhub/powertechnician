@@ -1,8 +1,11 @@
 #!/usr/bin/env python2
 
 import msgflo
-import sys
 from random import *
+import sys
+sys.path.append('../')
+from forecast import predict_consumption
+import datetime
 
 class Forecast(msgflo.Participant):
   def __init__(self, role):
@@ -23,8 +26,13 @@ class Forecast(msgflo.Participant):
     output = []
     for station in msg.data:
         forecast = station.copy()
-        # TODO: Plug in real forecast
-        forecast['forecast'] = random()
+        dof = datetime.datetime.today().weekday()
+        hour = datetime.datetime.today().hour
+        # TODO: Calculate humidity from dewpoint
+        value = predict_consumption(station['wind']['speed'],station['temperature'],78.666667,dof,hour)
+        print station
+        print value
+        forecast['forecast'] = value
         forecast['icao'] = station['station']
         output.append(forecast)
 
